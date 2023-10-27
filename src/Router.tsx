@@ -8,11 +8,20 @@ import Coin from './screens/Coin';
 import App from './App';
 import Chart from './routes/Chart';
 import Price from './routes/Price';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    ),
     children: [
       {
         path: '',

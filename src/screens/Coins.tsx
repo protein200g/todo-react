@@ -26,7 +26,9 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
 `;
-const CoinsList = styled.ul``;
+const CoinsList = styled.ul`
+  color: black;
+`;
 
 const CoinWrapper = styled.div`
   display: flex;
