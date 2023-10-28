@@ -57,5 +57,5 @@
     "@types/react-helmet": "^6.1.8",
     "@types/react-query": "^1.2.9"
   },
-  "hompage": "https://protein200g.github.io/coin-tracker"
+  "homepage": "https://protein200g.github.io/coin-tracker"
 }

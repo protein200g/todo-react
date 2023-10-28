@@ -36,8 +36,8 @@ const CoinWrapper = styled.div`
 `;
 
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: black;
+  color: #f5f6fa;
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 15px;
