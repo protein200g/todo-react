@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoinInfo } from '../api';
 import { fetchCoinTickers } from '../api';
+import { useOutletContext } from 'react-router-dom';
+
 const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
@@ -149,6 +151,9 @@ interface IPriceData {
     };
   };
 }
+interface IRouterProps {
+  isDark: boolean;
+}
 
 function Coin() {
   const { id } = useParams();
@@ -187,6 +192,7 @@ function Coin() {
   //   })();
   // }, []);
   const loading = infoLoading || priceLoading;
+  const { isDark } = useOutletContext<IRouterProps>();
   return (
     <Container>
       <Header>
@@ -240,7 +246,7 @@ function Coin() {
               <Link to={`/${id}/price`}>Price</Link>
             </Tab>
           </Tabs>
-          <Outlet context={{ coinId: id }} />
+          <Outlet context={{ coinId: id, isDark }} />
         </>
       )}
     </Container>

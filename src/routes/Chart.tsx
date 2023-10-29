@@ -20,10 +20,11 @@ interface ChartProps {
 
 interface ICoinId {
   coinId: string;
+  isDark: boolean;
 }
 
 function Chart() {
-  const { coinId } = useOutletContext<ICoinId>();
+  const { coinId, isDark } = useOutletContext<ICoinId>();
   const { isLoading, data } = useQuery<IData[]>({
     queryKey: ['ohlcv', coinId],
     queryFn: () => fetchCoinHistory(`${coinId}`),
@@ -32,7 +33,6 @@ function Chart() {
   const price = data?.map(
     (price) => new Date(price.time_close * 1000)
   );
-  console.log(price);
   return (
     <div>
       {isLoading ? (
@@ -59,7 +59,7 @@ function Chart() {
           ]}
           options={{
             theme: {
-              mode: 'dark',
+              mode: isDark ? 'dark' : 'light',
             },
             chart: {
               height: 300,

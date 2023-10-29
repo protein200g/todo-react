@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoins } from '../api';
+import { useOutletContext } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -26,9 +27,7 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
 `;
-const CoinsList = styled.ul`
-  color: black;
-`;
+const CoinsList = styled.ul``;
 
 const CoinWrapper = styled.div`
   display: flex;
@@ -36,8 +35,8 @@ const CoinWrapper = styled.div`
 `;
 
 const Coin = styled.li`
-  background-color: black;
-  color: #f5f6fa;
+  background-color: white;
+  color: ${(props) => props.theme.textColor};
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 15px;
@@ -68,12 +67,18 @@ interface CoinInterface {
   is_active: boolean;
   type: string;
 }
+interface IRouterProps {
+  isDark: boolean;
+  toggleDark: () => void;
+}
 
 function Coins() {
   const { isLoading, data } = useQuery<CoinInterface[]>({
     queryKey: ['allCoins'],
     queryFn: fetchCoins,
   });
+  const { isDark, toggleDark } =
+    useOutletContext<IRouterProps>();
   // const [coins, setCoins] = useState<CoinInterface[]>([]);
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {
@@ -86,10 +91,12 @@ function Coins() {
   //     setLoading(false);
   //   })();
   // }, []);
+  console.log(toggleDark);
   return (
     <Container>
       <Header>
         <Title>코인</Title>
+        <button onClick={toggleDark}>Toggle Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>

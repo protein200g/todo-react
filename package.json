@@ -56,6 +56,5 @@
   "devDependencies": {
     "@types/react-helmet": "^6.1.8",
     "@types/react-query": "^1.2.9"
-  },
-  "homepage": "https://protein200g.github.io/coin-tracker"
+  }
 }
