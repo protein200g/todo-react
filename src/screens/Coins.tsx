@@ -68,7 +68,6 @@ interface CoinInterface {
   type: string;
 }
 interface IRouterProps {
-  isDark: boolean;
   toggleDark: () => void;
 }
 
@@ -77,8 +76,6 @@ function Coins() {
     queryKey: ['allCoins'],
     queryFn: fetchCoins,
   });
-  const { isDark, toggleDark } =
-    useOutletContext<IRouterProps>();
   // const [coins, setCoins] = useState<CoinInterface[]>([]);
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {
@@ -91,12 +88,10 @@ function Coins() {
   //     setLoading(false);
   //   })();
   // }, []);
-  console.log(toggleDark);
   return (
     <Container>
       <Header>
         <Title>코인</Title>
-        <button onClick={toggleDark}>Toggle Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>

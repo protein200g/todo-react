@@ -9,6 +9,8 @@ import { createGlobalStyle } from 'styled-components';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Helmet } from 'react-helmet';
 import { darkTheme, lightTheme } from './theme';
+import { useRecoilValue } from 'recoil';
+import { isDarkAtom } from './atom';
 
 const GlobalStlye = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Playpen+Sans:wght@100;300&display=swap');
@@ -27,9 +29,7 @@ a{
 }`;
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-  const toggleDark = () => setIsDark((current) => !current);
-  console.log(toggleDark);
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     <>
       <Helmet>
@@ -41,7 +41,7 @@ function App() {
       >
         <GlobalStlye />
 
-        <Outlet context={{ toggleDark, isDark }} />
+        <Outlet />
         <ReactQueryDevtools initialIsOpen={true} />
       </ThemeProvider>
     </>

@@ -151,9 +151,6 @@ interface IPriceData {
     };
   };
 }
-interface IRouterProps {
-  isDark: boolean;
-}
 
 function Coin() {
   const { id } = useParams();
@@ -192,7 +189,6 @@ function Coin() {
   //   })();
   // }, []);
   const loading = infoLoading || priceLoading;
-  const { isDark } = useOutletContext<IRouterProps>();
   return (
     <Container>
       <Header>
@@ -246,7 +242,7 @@ function Coin() {
               <Link to={`/${id}/price`}>Price</Link>
             </Tab>
           </Tabs>
-          <Outlet context={{ coinId: id, isDark }} />
+          <Outlet context={{ coinId: id }} />
         </>
       )}
     </Container>
