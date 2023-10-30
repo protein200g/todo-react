@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Helmet } from 'react-helmet';
 import { darkTheme, lightTheme } from './theme';
 import { useRecoilValue } from 'recoil';
+import ToDoList from './ToDoList';
 
 const GlobalStlye = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Playpen+Sans:wght@100;300&display=swap');
@@ -34,6 +35,7 @@ function App() {
       </Helmet>
       <Reset />
       <GlobalStlye />
+      <ToDoList />
     </>
   );
 }
