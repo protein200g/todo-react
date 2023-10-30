@@ -1,25 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import router from './Router';
 import App from './App';
-import { darkTheme, lightTheme } from './theme';
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
+import { darkTheme } from './theme';
+import { ThemeProvider } from 'styled-components';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const queryClient = new QueryClient();
-
 root.render(
   <RecoilRoot>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <ThemeProvider theme={darkTheme}>
+      <App />
+    </ThemeProvider>
   </RecoilRoot>
 );

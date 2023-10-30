@@ -3,14 +3,12 @@ import styled, {
   ThemeProvider,
   keyframes,
 } from 'styled-components';
-import { Outlet } from 'react-router-dom';
 import { Reset } from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Helmet } from 'react-helmet';
 import { darkTheme, lightTheme } from './theme';
 import { useRecoilValue } from 'recoil';
-import { isDarkAtom } from './atom';
 
 const GlobalStlye = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Playpen+Sans:wght@100;300&display=swap');
@@ -29,21 +27,13 @@ a{
 }`;
 
 function App() {
-  const isDark = useRecoilValue(isDarkAtom);
   return (
     <>
       <Helmet>
         <title>CoinTracker</title>
       </Helmet>
       <Reset />
-      <ThemeProvider
-        theme={isDark ? darkTheme : lightTheme}
-      >
-        <GlobalStlye />
-
-        <Outlet />
-        <ReactQueryDevtools initialIsOpen={true} />
-      </ThemeProvider>
+      <GlobalStlye />
     </>
   );
 }
